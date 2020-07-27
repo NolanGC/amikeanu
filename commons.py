@@ -10,10 +10,8 @@ import torchvision.transforms as transforms
 from keanumodel import KeanuModel
 
 def get_model():
-    pth_path = os.path.join(os.path.join("static", "images"), "checkpoint.pth")
-    model = KeanuModel()
-    model.load_state_dict(torch.load(pth_path)["state_dict"])
-    return model
+    pass
+    #return model
 
 def get_tensor(image_bytes):
     my_transforms = transforms.ToTensor()
