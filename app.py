@@ -8,23 +8,22 @@ import torch.nn as nn
 import torch.nn.functional as F
 import torchvision.transforms as transforms
 from flask import Flask, request, render_template
+from keanumodel import KeanuModel
 app = Flask(__name__) 
 
 from commons import get_tensor
 from inference import get_pred
 
-class KeanuModel(object):
-    pass
 
 app.config["UPLOAD_FOLDER"] = os.path.join("static", "images")
 
 @app.route("/", methods=["GET", "POST"])
 def site():
     if request.method == "GET":
-        return render_template("index.html", value="hi")
+        return render_template("index.html")
     if request.method == "POST":
         if "file" not in request.files:
-            print("no file brub")
+            print("no files")
             return
         file = request.files["file"]
         image = file.read()

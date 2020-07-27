@@ -9,7 +9,6 @@ from PIL import Image
 import torchvision.transforms as transforms
 from keanumodel import KeanuModel
 
-
 def get_model():
     pth_path = os.path.join(os.path.join("static", "images"), "checkpoint.pth")
     model = KeanuModel()
