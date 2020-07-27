@@ -6,8 +6,38 @@
 </head>
 
 <body>
-    <h1>YOU ARE {{pred}}% KEANU</h1>
-    <img src="{{image}}" width="700" height="500">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <h1 class="pred">YOU ARE {{pred}}% KEANU</h1>
+    <img src="{{image}}" class="img">
 </body>
 
 </html>
+
+
+<style>
+    .title {
+        position: absolute;
+        top: 5%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    h1 {
+        font-family: "Arial Black", Gadget, sans-serif;
+    }
+
+    .pred {
+        position: absolute;
+        top: 20%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .img {
+
+        position: absolute;
+        top: 55%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+</style>

@@ -35,7 +35,7 @@ def site():
         file = request.files["file"]
         image = file.read()
         pred = get_pred(image, model)
-        filename = "keanupoint.jpg"
+        filename = "keanu.gif"
         return render_template(
             "result.html",
             pred=str(round(pred * 100, 2)),

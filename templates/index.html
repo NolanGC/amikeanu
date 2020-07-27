@@ -6,8 +6,10 @@
 </head>
 
 <body>
-  <h1> ARE YOU KEANU REEVES?</h1>
-  <form method='post' enctype=multipart/form-data> <input type="file" name="file" id="file-input">
+  <h1 class="title">ARE YOU KEANU REEVES???</h1>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <form method='post' enctype=multipart/form-data>
+    <input type="file" name="file" id="file-input">
     <input type="submit" value="upload">
     <script type="text/javascript">
       document.getElementById("file-input").onchange = function () {
@@ -18,7 +20,54 @@
         reader.readAsDataURL(this.files[0]);
       };
     </script>
-    <img id="image" width="600" , height="600">
+    <img id="image" width=device-width/3 , height=device-height/3 class="image">
 </body>
 
 </html>
+
+<style>
+  input[type=file] {
+    position: absolute;
+    top: 85%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  input[type=submit] {
+    position: absolute;
+    top: 92%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.5em;
+    color: rgb(0, 0, 0);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    border-radius: 6px;
+  }
+
+  .image {
+    max-width: 80%;
+    max-height: 60%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+  }
+
+  .title {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  h1 {
+    font-family: "Arial Black", Gadget, sans-serif;
+  }
+</style>
+
+<body>
