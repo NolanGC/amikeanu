@@ -53,4 +53,7 @@ def hello_world():
             image=os.path.join(app.config["UPLOAD_FOLDER"], filename),
         )
 if __name__ == "__main__":
+    model = KeanuModel()
+    KeanuModel.__module__ = "keanumodel"
+    model.load_state_dict(torch.load(os.path.join(os.path.join("static", "images"), "checkpoint.pth"))["state_dict"])
     app.run(debug=True)
