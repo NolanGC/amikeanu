@@ -43,8 +43,8 @@ app = Flask(__name__)
 app.config["UPLOAD_FOLDER"] = os.path.join("static", "images")
 
 model = KeanuModel(3 * 64 * 64, hidden_size=32, out_size=2)
-        pth_path = os.path.join(app.config["UPLOAD_FOLDER"], "checkpoint.pth")
-        model.load_state_dict(torch.load(pth_path)["state_dict"])
+pth_path = os.path.join(app.config["UPLOAD_FOLDER"], "checkpoint.pth")
+model.load_state_dict(torch.load(pth_path)["state_dict"])
 
 @app.route("/", methods=["GET", "POST"])
 def hello_world():
