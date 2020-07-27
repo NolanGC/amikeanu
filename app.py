@@ -10,13 +10,6 @@ import torch.nn as nn
 import torch.nn.functional as F
 from torch.utils.data import DataLoader
 
-input_size = 3 * 64 * 64
-num_classes = 2
-hidden_size = 64
-hidden_size2 = 32
-hidden_size3 = 16
-
-
 def accuracy(outputs, labels):
     _, preds = torch.max(outputs, dim=1)
     return torch.tensor(torch.sum(preds == labels).item() / len(preds))
@@ -72,9 +65,13 @@ class KeanuModel(nn.Module):
             )
         )
 
+input_size = 3 * 64 * 64
+num_classes = 2
+hidden_size = 64
+hidden_size2 = 32
+hidden_size3 = 16
 
-app = Flask(__name__)
-
+app = Flask(__name__) 
 app.config["UPLOAD_FOLDER"] = os.path.join("static", "images")
 
 
