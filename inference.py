@@ -3,8 +3,6 @@ from torch.utils.data import DataLoader
 import torch.nn.functional as F
 import torch.nn as nn
 
-model = get_model()
-
 def get_pred(image_bytes, model):
     tensor = get_tensor(image_bytes)
     test_loader = DataLoader([(tensor, 0)], 1)
