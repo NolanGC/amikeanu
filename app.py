@@ -42,6 +42,10 @@ class KeanuModel(nn.Module):
 app = Flask(__name__) 
 app.config["UPLOAD_FOLDER"] = os.path.join("static", "images")
 
+model = KeanuModel(3 * 64 * 64, hidden_size=32, out_size=2)
+        pth_path = os.path.join(app.config["UPLOAD_FOLDER"], "checkpoint.pth")
+        model.load_state_dict(torch.load(pth_path)["state_dict"])
+
 @app.route("/", methods=["GET", "POST"])
 def hello_world():
     if request.method == "GET":
@@ -52,9 +56,6 @@ def hello_world():
             return
         file = request.files["file"]
         image = file.read()
-        model = KeanuModel(3 * 64 * 64, hidden_size=32, out_size=2)
-        pth_path = os.path.join(app.config["UPLOAD_FOLDER"], "checkpoint.pth")
-        model.load_state_dict(torch.load(pth_path)["state_dict"])
         tensor = get_tensor(image_bytes=image)
         test_loader = DataLoader([(tensor, 0)], 1)
         filename = "keanupoint.jpg"
