@@ -2,10 +2,13 @@ import io
 import os
 import torch
 import numpy as np
+import torch.nn as nn
+import torch.nn.functional as F
 import cv2
 from PIL import Image
 import torchvision.transforms as transforms
 from keanumodel import KeanuModel
+
 
 def get_model():
     pth_path = os.path.join(os.path.join("static", "images"), "checkpoint.pth")

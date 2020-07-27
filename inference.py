@@ -1,6 +1,8 @@
 from commons import get_model, get_tensor
 from torch.utils.data import DataLoader
 import torch.nn.functional as F
+import torch.nn as nn
+from keanumodel import KeanuModel
 
 model = get_model()
 
