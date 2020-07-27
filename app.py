@@ -71,4 +71,5 @@ def hello_world():
 
 
 if __name__ == "__main__":
+    KeanuModel.__module__ = "app"
     app.run(debug=True)
