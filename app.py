@@ -8,11 +8,13 @@ import torch.nn as nn
 import torch.nn.functional as F
 import torchvision.transforms as transforms
 from flask import Flask, request, render_template
-from keanumodel import KeanuModel
 app = Flask(__name__) 
 
 from commons import get_tensor
 from inference import get_pred
+
+class KeanuModel(object):
+    pass
 
 app.config["UPLOAD_FOLDER"] = os.path.join("static", "images")
 
