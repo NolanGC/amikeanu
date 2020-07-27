@@ -8,13 +8,21 @@ import torch.nn as nn
 import torch.nn.functional as F
 import torchvision.transforms as transforms
 from flask import Flask, request, render_template
-from keanumodel import KeanuModel
 app = Flask(__name__) 
 
 from commons import get_tensor
 from inference import get_pred
 
 app.config["UPLOAD_FOLDER"] = os.path.join("static", "images")
+
+
+from keanumodel import KeanuModel
+#model = KeanuModel()
+#pth_path = os.path.join(os.path.join("static", "images"), "checkpoint.pth")
+#model.load_state_dict(torch.load(pth_path)["state_dict"])
+#torch.save(model, "model.pth")
+
+model = torch.load('model.pth')
 
 @app.route("/", methods=["GET", "POST"])
 def site():
@@ -26,9 +34,6 @@ def site():
             return
         file = request.files["file"]
         image = file.read()
-        pth_path = os.path.join(os.path.join("static", "images"), "checkpoint.pth")
-        model = KeanuModel()
-        model.load_state_dict(torch.load(pth_path)["state_dict"])
         pred = get_pred(image, model)
         filename = "keanupoint.jpg"
         return render_template(
