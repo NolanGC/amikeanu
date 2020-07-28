@@ -5,7 +5,7 @@ import torch.nn as nn
 
 def get_pred(image_bytes, model):
     tensor = get_tensor(image_bytes)
-    test_loader = DataLoader([(tensor, 0)], 1)
+    test_loader = DataLoader([(tensor, 0)], 128)
     for img, _ in test_loader:
         pred = model(img)
         break

@@ -12,17 +12,15 @@ app = Flask(__name__)
 
 from commons import get_tensor
 from inference import get_pred
+from keanumodel import KeanuCnnModel
 
 app.config["UPLOAD_FOLDER"] = os.path.join("static", "images")
 
-
-from keanumodel import KeanuModel
-#model = KeanuModel()
-#pth_path = os.path.join(os.path.join("static", "images"), "checkpoint.pth")
+pth_path = os.path.join(os.path.join("static", "images"), "keanucnn1.pth")
 #model.load_state_dict(torch.load(pth_path)["state_dict"])
-#torch.save(model, "model.pth")
-
-model = torch.load('model.pth')
+#model = torch.load(pth_path)
+#torch.save(model, "model2.pth")
+model = torch.load('model2.pth')
 
 @app.route("/", methods=["GET", "POST"])
 def site():
