@@ -42,11 +42,13 @@ def site():
         file = request.files["file"]
         image = file.read()
         pred = get_pred(image, model)
-        mathpred = confidence(pred)
+        mathpred = round(confidence(pred)*100,2)
+        if(mathpred > 100):
+            mathpred = 100
         filename = "keanu.gif"
         return render_template(
             "result.html",
-            pred=str(round(mathpred * 100, 2)),
+            pred=str(mathpred),
             #otherpred = str(round(mathpred*100,2)),
             image=os.path.join(app.config["UPLOAD_FOLDER"], filename),
         )
