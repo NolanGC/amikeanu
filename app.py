@@ -21,7 +21,7 @@ pth_path = os.path.join(os.path.join("static", "images"), "keanucnn1.pth")
 #model = torch.load(pth_path)
 #torch.save(model, "model2.pth")
 model = KeanuCnnModel()
-model.load_state_dict(torch.load(pth_path).state_dict())
+model.load_state_dict(torch.load('cnnstatedict.pth'))
 #model = torch.load('model2.pth')
 
 @app.route("/", methods=["GET", "POST"])
