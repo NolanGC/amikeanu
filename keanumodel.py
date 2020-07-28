@@ -1,5 +1,6 @@
 import torch.nn as nn
 import torch.nn.functional as F
+import torch
 # checkpoint.pth
 # class KeanuModel(nn.Module):
 #     def __init__(self):
@@ -44,7 +45,11 @@ class ImageClassificationBase(nn.Module):
     def epoch_end(self, epoch, result):
         print("Epoch [{}], train_loss: {:.4f}, val_loss: {:.4f}, val_acc: {:.4f}".format(
             epoch, result['train_loss'], result['val_loss'], result['val_acc']))
-            
+
+class Flatten(torch.nn.Module):
+    def forward(self, x):
+        batch_size = x.shape[0]
+        return x.view(batch_size, -1)
 class KeanuCnnModel(ImageClassificationBase):
     def __init__(self):
         super().__init__()
@@ -67,7 +72,7 @@ class KeanuCnnModel(ImageClassificationBase):
             nn.ReLU(),
             nn.MaxPool2d(2, 2), # output: 256 x 4 x 4
 
-            nn.Flatten(), 
+            Flatten(), 
             nn.Linear(256*4*4, 1024),
             nn.ReLU(),
             nn.Linear(1024, 512),

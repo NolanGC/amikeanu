@@ -19,8 +19,9 @@ def get_tensor(image_bytes):
     open_cv_image = np.array(pil_image)
     open_cv_image = open_cv_image[:, :, ::-1].copy()
     new_array = cv2.resize(open_cv_image, (32, 32))
+    #TODO TRY ORIGINAL MODEL BUT WITH THE LINE MARKED $
     new_array = np.array(new_array[:, :, [2, 1, 0]])
-    new_array = np.transpose(new_array, (2, 0, 1))
+    new_array = np.transpose(new_array, (2, 0, 1)) #RGB AGAINherok
     img_tensor = torch.tensor(new_array, dtype=torch.float)
     print(img_tensor.shape)
     return img_tensor

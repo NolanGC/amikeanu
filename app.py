@@ -12,9 +12,9 @@ app = Flask(__name__)
 
 from commons import get_tensor
 from inference import get_pred
-from keanumodel import KeanuCnnModel
 
 app.config["UPLOAD_FOLDER"] = os.path.join("static", "images")
+from keanumodel import KeanuCnnModel
 
 pth_path = os.path.join(os.path.join("static", "images"), "keanucnn1.pth")
 #model.load_state_dict(torch.load(pth_path)["state_dict"])
