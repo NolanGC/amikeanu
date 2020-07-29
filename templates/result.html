@@ -8,7 +8,8 @@
 <body>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <h1 class="pred">YOU ARE {{pred}}% KEANU</h1>
-    <img src="{{image}}" class="img">
+    <img src="" class="img" id="image" alt={{base64}}>
+    <script>document.getElementById("image").src = "data:image/jpeg;base64," + document.getElementById("image").alt;</script>
     <form>
         <input type="button" value="submit another" onclick="history.back()" class="back">
     </form>
@@ -41,12 +42,14 @@
         position: absolute;
         top: 55%;
         left: 50%;
+        max-width: 50%;
+        max-height: 50%;
         transform: translate(-50%, -50%);
     }
 
     .back {
         position: absolute;
-        top: 74%;
+        top: 83%;
         left: 50%;
         transform: translate(-50%, -50%);
         font-size: 1.3em;

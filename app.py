@@ -4,6 +4,7 @@ import cv2
 import math
 import torch
 import numpy as np
+import base64
 from PIL import Image
 import torch.nn as nn
 import torch.nn.functional as F
@@ -28,11 +29,13 @@ def site():
             print("no files")
             return
         file = request.files["file"]
-        pred = get_pred(file.read(), model)
+        bytes = file.read()
+        pred = get_pred(bytes, model)
+        base64_bytes = base64.b64encode(bytes)
         return render_template(
             "result.html",
             pred=str(round(pred*100,2)),
-            image=os.path.join(app.config["UPLOAD_FOLDER"], "keanu.gif"),
+            base64=str(base64_bytes).replace("b'",'').replace("'",''),
         )
 if __name__ == "__main__":
     app.run(debug=True)
