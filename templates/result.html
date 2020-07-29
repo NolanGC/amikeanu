@@ -9,6 +9,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <h1 class="pred">YOU ARE {{pred}}% KEANU</h1>
     <img src="{{image}}" class="img">
+    <form>
+        <input type="button" value="submit another" onclick="history.back()" class="back">
+    </form>
 </body>
 
 </html>
@@ -39,5 +42,19 @@
         top: 55%;
         left: 50%;
         transform: translate(-50%, -50%);
+    }
+
+    .back {
+        position: absolute;
+        top: 74%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 1.3em;
+        color: rgb(0, 0, 0);
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        box-sizing: border-box;
+        background-color: #ffffff;
     }
 </style>
